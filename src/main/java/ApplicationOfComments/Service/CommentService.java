@@ -18,13 +18,22 @@ public class CommentService {
     public int update(comments comments){
         return commentsDao.updateComments(comments);
     }
-    public int delete(int id){
+    public int delete(String id){
         return commentsDao.deleteComments(id);
     }
-    public comments get(int id){
+    public comments get(String id){
         return commentsDao.getComments(id);
     }
     public List<comments> getlist(){
         return commentsDao.list();
+    }
+    public comments getParentComments(int  blank_id){
+        return commentsDao.getParentComments(blank_id);
+    }
+    public comments getSonComments(int  black_id,int id){
+        return commentsDao.getSonComments(black_id,id);
+    }
+    public List<comments> listOfBlank(int blank_id){
+        return commentsDao.listOfBlank(blank_id);
     }
 }

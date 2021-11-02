@@ -37,7 +37,7 @@ public class CommentController {
     }
     @PostMapping("/delete")
     public JsonResult delete(HttpServletRequest httpServletRequest, @RequestBody Map<String,String> map){
-        int flag=commentService.delete(Integer.parseInt(map.get(("id"))));
+        int flag=commentService.delete((map.get(("id"))));
         if(flag==1){
             return new JsonResult(true,GlobalReturnCode.OPERA_SUCCESS);
         }else {
@@ -51,7 +51,22 @@ public class CommentController {
     }
     @PostMapping("/get")
     public JsonResult get(HttpServletRequest httpServletRequest,@RequestBody Map<String,String> map){
-        comments comments=commentService.get(Integer.parseInt(map.get("id")));
+        comments comments=commentService.get(map.get("id"));
         return new JsonResult(true,GlobalReturnCode.OPERA_SUCCESS,comments);
 }
+    @PostMapping("/parentcomment")
+    public JsonResult getParentComment(HttpServletRequest httpServletRequest,@RequestBody Map<String,String> map){
+        comments comments=commentService.getParentComments(Integer.parseInt(map.get("blank_id")));
+        return new JsonResult(true,GlobalReturnCode.OPERA_SUCCESS,comments);
+    }
+    @PostMapping("/soncomment")
+    public JsonResult getSoncomment(HttpServletRequest httpServletRequest,@RequestBody Map<String,String> map){
+        comments comments=commentService.getSonComments(Integer.parseInt(map.get("blank_id")),Integer.parseInt(map.get("id")));
+        return new JsonResult (true,GlobalReturnCode.OPERA_SUCCESS,comments);
+    }
+    @PostMapping("/blanklist")
+    public JsonResult BlankList(HttpServletRequest httpServletRequest,@RequestBody Map<String,String> map){
+        List<comments> list=commentService.listOfBlank(Integer.parseInt(map.get("blank_id")));
+        return new JsonResult(true,GlobalReturnCode.OPERA_SUCCESS,list);
+    }
 }
