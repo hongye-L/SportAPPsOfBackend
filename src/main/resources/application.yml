@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://120.24.191.82:3306/mysql?serverTimezone = GMT
+    username: root
+    password: miku1234
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    database: 0
+    password:
