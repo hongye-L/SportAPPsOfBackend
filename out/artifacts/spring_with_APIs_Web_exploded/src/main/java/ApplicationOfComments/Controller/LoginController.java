@@ -18,17 +18,17 @@ import java.util.Map;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/login")
+@RequestMapping("/")
 public class LoginController {
     @Autowired
     private UserService userService;
     @Autowired
     private RedisUtil redisUtil;
     @PostMapping("/checklogin")
-    public JsonResult checklogin(HttpServletRequest httpServletRequest,@RequestBody dto dto){
-        Users users=userService.getByUsername(dto.getUsername());
+    public JsonResult checklogin(HttpServletRequest httpServletRequest,@RequestBody dto Dto){
+        Users users=userService.getByUsername(Dto.getUsername());
         //登录成功！
-        if(users!=null&&users.getPassword().equals(dto.getPassword())) {
+        if(users!=null&&users.getPassword().equals(Dto.getPassword())) {
             String accessToken = UUID.randomUUID().toString();
             //把accessToken塞到Redis内
             redisUtil.set(RedisKey.ACCESS_TOKEN + accessToken, users, 30 + 60);
@@ -38,7 +38,7 @@ public class LoginController {
             return jsonResult;
         }else{
             JsonResult jsonResult=new JsonResult(false,"20001");
+            return jsonResult;
         }
-        return null;
     }
 }

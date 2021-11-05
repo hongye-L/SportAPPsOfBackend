@@ -12,7 +12,7 @@ public class UserDao{
     @Autowired
     private JdbcTemplate jdbcTemplate;
     public Users getByUsername(String username){
-        List<Users> list=jdbcTemplate.query("select * from mysql.table_user where username = ?",new Object[]{username}, new BeanPropertyRowMapper(Users.class));
+        List<Users> list=jdbcTemplate.query("select * from sportapp.users where username = ?",new Object[]{username}, new BeanPropertyRowMapper(Users.class));
         return list.size()>0 ? list.get(0) : null;
     }
 }

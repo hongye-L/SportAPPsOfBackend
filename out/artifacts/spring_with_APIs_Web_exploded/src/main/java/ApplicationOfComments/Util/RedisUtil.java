@@ -20,12 +20,29 @@ public class RedisUtil {
      * @param key key
      * @param value value
      */
-    public void set(final String key,Object value,final long I){
+    public void set(final String key,Object value){
         final byte[] bytes=SerializeUtil.serialize(value);
         redisTemplate.execute(new RedisCallback<Object>() {
             @Override
             public Object doInRedis(RedisConnection redisConnection)throws DataAccessException{
-                redisConnection.setEx(redisTemplate.getStringSerializer().serialize(key),I,bytes);
+                redisConnection.set(redisTemplate.getStringSerializer().serialize(key),bytes);
+                return null;
+            }
+        });
+    }
+    /**
+     * 设置key和value，并加上时间（秒）
+     *
+     * @param key key
+     * @param value value
+     * @param l 时间
+     */
+    public void set(final String key, Object value, final long l) {
+        final byte[] vbytes = SerializeUtil.serialize(value);
+        redisTemplate.execute(new RedisCallback<Object>() {
+            @Override
+            public Object doInRedis(RedisConnection connection) throws DataAccessException {
+                connection.setEx(redisTemplate.getStringSerializer().serialize(key), l, vbytes);
                 return null;
             }
         });

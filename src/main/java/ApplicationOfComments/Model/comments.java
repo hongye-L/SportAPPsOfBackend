@@ -6,13 +6,15 @@ public class comments {
     private String comment;
     private int parent_id;
     private int blank_id;
+    private String time;
     public comments(){}
-    public comments(int blank_id,String id, String name, String comment,int parent_id){
+    public comments(int blank_id,String id, String name, String comment,int parent_id,String time){
         this.id=id;
         this.name=name;
         this.comment=comment;
         this.blank_id=blank_id;
         this.parent_id=parent_id;
+        this.time=time;
     }
 
     public String getId() {
@@ -54,9 +56,18 @@ public class comments {
     public int getBlank_id() {
         return blank_id;
     }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
     @Override
     public String toString()
     {
-        return this.getClass().getName()+"{blank_id:"+blank_id+"id:"+id+";name:"+name+" comment:"+comment+"parent_id"+parent_id+"}";
+        return this.getClass().getName()+"{blank_id:"+blank_id+"id:"+id+";name:"+name+" comment:"+comment+"parent_id"+parent_id+"time:"+time+"}";
     }
 }
