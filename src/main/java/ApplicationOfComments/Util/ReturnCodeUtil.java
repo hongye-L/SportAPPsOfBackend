@@ -15,7 +15,8 @@ public class ReturnCodeUtil {
 
         returnCodeMap.put(GlobalReturnCode.OPERA_FAILURE, "操作失败");
         returnCodeMap.put("20102", "账号或密码错误");
-
+        returnCodeMap.put("20101", "注册成功！");
+        returnCodeMap.put("20103","登录成功！");
 
         returnCodeMap.put(GlobalReturnCode.NO_AUTH, "无权限");
         returnCodeMap.put(GlobalReturnCode.SYSTEM_ERROR, "系统错误");
