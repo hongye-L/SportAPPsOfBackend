@@ -7,14 +7,16 @@ public class comments {
     private int parent_id;
     private int blank_id;
     private String time;
+    private String blank_name;
     public comments(){}
-    public comments(int blank_id,String id, String name, String comment,int parent_id,String time){
+    public comments(int blank_id,String id, String name, String comment,int parent_id,String time,String blank_name){
         this.id=id;
         this.name=name;
         this.comment=comment;
         this.blank_id=blank_id;
         this.parent_id=parent_id;
         this.time=time;
+        this.blank_name=blank_name;
     }
 
     public String getId() {
@@ -65,9 +67,17 @@ public class comments {
         this.time = time;
     }
 
+    public void setBlank_name(String blank_name) {
+        this.blank_name = blank_name;
+    }
+
+    public String getBlank_name() {
+        return blank_name;
+    }
+
     @Override
     public String toString()
     {
-        return this.getClass().getName()+"{blank_id:"+blank_id+"id:"+id+";name:"+name+" comment:"+comment+"parent_id"+parent_id+"time:"+time+"}";
+        return this.getClass().getName()+"{blank_id:"+blank_id+"id:"+id+";name:"+name+" comment:"+comment+"parent_id"+parent_id+"time:"+time+"blank_name"+blank_name+"}";
     }
 }
