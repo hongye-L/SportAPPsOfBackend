@@ -1,12 +1,12 @@
 package ApplicationOfComments.Model;
 
-public class comments {
+public class replys {
     private String id;
     private String name;
     private String comment;
     private String time;
-    public comments(){}
-    public comments(String id, String name, String comment,String time){
+    public replys(){}
+    public replys(String id, String name, String comment,String time){
         this.id=id;
         this.name=name;
         this.comment=comment;
@@ -36,9 +36,6 @@ public class comments {
     public void setComment(String comment) {
         this.comment = comment;
     }
-
-
-
 
     public String getTime() {
         return time;
