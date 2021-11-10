@@ -9,7 +9,3 @@ spring:
     port: 6379
     database: 0
     password:
-    servlet:
-    multipath:
-          max-request-size:10240MB
-          max-file-size:1024MB
