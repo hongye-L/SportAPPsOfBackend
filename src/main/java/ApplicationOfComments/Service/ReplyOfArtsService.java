@@ -1,6 +1,6 @@
 package ApplicationOfComments.Service;
 
-import ApplicationOfComments.APIsDAO.ReplysOfSportDAO;
+import ApplicationOfComments.APIsDAO.ReplyOfArtsDAO;
 import ApplicationOfComments.Model.replys;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,7 +9,7 @@ import java.util.List;
 @Service
 public class ReplyOfArtsService {
     @Autowired
-    private ReplysOfSportDAO replysDAO;
+    private ReplyOfArtsDAO replysDAO;
 
     public int add(replys replys){
         return replysDAO.addReply(replys);

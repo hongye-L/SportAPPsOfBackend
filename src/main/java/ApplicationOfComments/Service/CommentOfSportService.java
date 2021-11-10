@@ -2,7 +2,6 @@ package ApplicationOfComments.Service;
 
 import ApplicationOfComments.APIsDAO.CommentsOfSportDao;
 import ApplicationOfComments.Model.comments;
-import ApplicationOfComments.Model.replys;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

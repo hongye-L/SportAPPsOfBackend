@@ -1,11 +1,9 @@
     package ApplicationOfComments.Service;
 
-import ApplicationOfComments.APIsDAO.UserDao;
-import ApplicationOfComments.Model.Users;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
+    import ApplicationOfComments.APIsDAO.UserDao;
+    import ApplicationOfComments.Model.Users;
+    import org.springframework.beans.factory.annotation.Autowired;
+    import org.springframework.stereotype.Service;
 
     @Service
 public class UserService {

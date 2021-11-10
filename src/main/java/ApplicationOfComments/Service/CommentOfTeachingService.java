@@ -1,7 +1,6 @@
 package ApplicationOfComments.Service;
 
 import ApplicationOfComments.APIsDAO.CommentOfTeachingDAO;
-import ApplicationOfComments.APIsDAO.CommentsOfSportDao;
 import ApplicationOfComments.Model.comments;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
