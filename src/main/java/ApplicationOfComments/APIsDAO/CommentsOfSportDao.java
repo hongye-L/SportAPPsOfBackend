@@ -16,7 +16,7 @@ public class CommentsOfSportDao {
     private JdbcTemplate jdbcTemplate;
 
     public int addcomment(comments comments){
-        String sql="insert into sportapp.comment_sport(comment_id,nickname,content,floor,post_id) values(:reply_id,:nickname,:content,:floor,:post_id)";
+        String sql="insert into sportapp.comment_sport(comment_id,nickname,content,floor,post_id) values(:comment_id,:nickname,:content,:floor,:post_id)";
         return new NamedParameterJdbcTemplate(jdbcTemplate).update(sql,new BeanPropertySqlParameterSource(comments));
     }
     public int updatecomment(comments comments) {

@@ -1,7 +1,7 @@
 package ApplicationOfComments.Controller;
 
 import ApplicationOfComments.Model.POSTs;
-import ApplicationOfComments.Service.PostOfSportService;
+import ApplicationOfComments.Service.PostOfArtsService;
 import ApplicationOfComments.Util.GlobalReturnCode;
 import ApplicationOfComments.Util.JsonResult;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,10 +14,10 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Map;
 @RestController
-@RequestMapping("/PostOfSport")
-public class PostsOfSportController {
+@RequestMapping("/PostOfArts")
+public class PostOfArtsController {
     @Autowired
-    private PostOfSportService postService;
+    private PostOfArtsService postService;
 
     @PostMapping("/add")
     public JsonResult add(HttpServletRequest httpServletRequest, @RequestBody POSTs posTs) {

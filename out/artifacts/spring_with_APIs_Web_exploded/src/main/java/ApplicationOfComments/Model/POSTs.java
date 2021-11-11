@@ -33,7 +33,7 @@ public class POSTs {
         this.goods=goods;
         this.replys=replys;
     }
-
+    public POSTs(){}
     public int getPost_id() {
         return post_id;
     }
