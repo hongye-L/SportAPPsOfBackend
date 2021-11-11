@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Map;
 @RestController
-@RequestMapping("/replyOfSport")
+@RequestMapping("/replyOfSports")
 public class ReplyOfSportController {
     @Autowired
     private ReplyOfSportService replyService;

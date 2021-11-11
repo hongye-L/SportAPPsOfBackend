@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/commentOfSport")
+@RequestMapping("/commentOfSports")
 public class CommentOfSportController {
     @Autowired
     private CommentOfSportService commentService;
