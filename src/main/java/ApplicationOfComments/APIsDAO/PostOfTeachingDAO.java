@@ -22,7 +22,7 @@ public class PostOfTeachingDAO {
         return new NamedParameterJdbcTemplate(jdbcTemplate).update(sql,new BeanPropertySqlParameterSource(posTs));
     }
     public int updatecomment(POSTs posTs) {
-        String sql = "update sportapp.post_teaching set content=:comment,nickname=:name where post_id=:id";
+        String sql = "update sportapp.post_teaching set content=:content where post_id=:post_id";
         return new NamedParameterJdbcTemplate(jdbcTemplate).update(sql,new BeanPropertySqlParameterSource(posTs));
     }
     public int deletecomment (String id){

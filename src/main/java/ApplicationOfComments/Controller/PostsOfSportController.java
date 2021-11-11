@@ -41,7 +41,7 @@ public class PostsOfSportController {
 
     @PostMapping("/delete")
     public JsonResult delete(HttpServletRequest httpServletRequest, @RequestBody Map<String, String> map) {
-        int flag = postService.delete((map.get(("id"))));
+        int flag = postService.delete((map.get(("post_id"))));
         if (flag == 1) {
             return new JsonResult(true, GlobalReturnCode.OPERA_SUCCESS);
         } else {

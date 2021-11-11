@@ -39,7 +39,7 @@ public class ReplyOfTeachingController {
     }
     @PostMapping("/delete")
     public JsonResult delete(HttpServletRequest httpServletRequest, @RequestBody Map<String,String> map){
-        int flag=replyService.delete((map.get(("id"))));
+        int flag=replyService.delete((map.get(("reply_id"))));
         if(flag==1){
             return new JsonResult(true,GlobalReturnCode.OPERA_SUCCESS);
         }else {
@@ -53,12 +53,12 @@ public class ReplyOfTeachingController {
     }
     @PostMapping("/get")
     public JsonResult get(HttpServletRequest httpServletRequest,@RequestBody Map<String,String> map){
-        replys replys=replyService.get(map.get("id"));
+        replys replys=replyService.get(map.get("reply_id"));
         return new JsonResult(true,GlobalReturnCode.OPERA_SUCCESS,replys);
     }
     @PostMapping("/replylist")
     public JsonResult ReplyList(HttpServletRequest httpServletRequest,@RequestBody Map<String,String> map){
-        List<replys> list=replyService.replysList(Integer.parseInt(map.get("id")));
+        List<replys> list=replyService.replysList(Integer.parseInt(map.get("comment_id")));
         return new JsonResult(true,GlobalReturnCode.OPERA_SUCCESS,list);
     }
 }

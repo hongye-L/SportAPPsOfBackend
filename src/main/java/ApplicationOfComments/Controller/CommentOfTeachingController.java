@@ -39,7 +39,7 @@ public class CommentOfTeachingController {
     }
     @PostMapping("/delete")
     public JsonResult delete(HttpServletRequest httpServletRequest, @RequestBody Map<String,String> map){
-        int flag=commentService.delete((map.get(("id"))));
+        int flag=commentService.delete((map.get(("comment_id"))));
         if(flag==1){
             return new JsonResult(true,GlobalReturnCode.OPERA_SUCCESS);
         }else {
@@ -53,12 +53,12 @@ public class CommentOfTeachingController {
     }
     @PostMapping("/get")
     public JsonResult get(HttpServletRequest httpServletRequest,@RequestBody Map<String,String> map){
-        comments comments=commentService.get(map.get("id"));
+        comments comments=commentService.get(map.get("comment_id"));
         return new JsonResult(true,GlobalReturnCode.OPERA_SUCCESS,comments);
     }
     @PostMapping("/commentlist")
     public JsonResult ReplyList(HttpServletRequest httpServletRequest, @RequestBody Map<String, String> map) {
-        List<comments> list = commentService.commentsList(Integer.parseInt(map.get("id")));
+        List<comments> list = commentService.commentsList(Integer.parseInt(map.get("post_id")));
         return new JsonResult(true, GlobalReturnCode.OPERA_SUCCESS, list);
     }
 }

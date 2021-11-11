@@ -41,7 +41,7 @@ public class PostOfArtsController {
 
     @PostMapping("/delete")
     public JsonResult delete(HttpServletRequest httpServletRequest, @RequestBody Map<String, String> map) {
-        int flag = postService.delete((map.get(("id"))));
+        int flag = postService.delete((map.get(("post_id"))));
         if (flag == 1) {
             return new JsonResult(true, GlobalReturnCode.OPERA_SUCCESS);
         } else {
@@ -57,7 +57,7 @@ public class PostOfArtsController {
 
     @PostMapping("/get")
     public JsonResult get(HttpServletRequest httpServletRequest, @RequestBody Map<String, String> map) {
-        POSTs posTs=postService.get(map.get("id"));
+        POSTs posTs=postService.get(map.get("post_id"));
         return new JsonResult(true, GlobalReturnCode.OPERA_SUCCESS,posTs);
     }
 }

@@ -15,11 +15,11 @@ public class ReplysOfSportDAO {
         private JdbcTemplate jdbcTemplate;
 
         public int addReply(replys replys){
-            String sql="insert into sportapp.reply_sport(reply_id,nickname,content) values(:reply_id,:nickname,:content)";
+            String sql="insert into sportapp.reply_arts(reply_id,nickname,content,parent_id) values(:reply_id,:nickname,:content,:parent_id)";
             return new NamedParameterJdbcTemplate(jdbcTemplate).update(sql,new BeanPropertySqlParameterSource(replys));
         }
         public int updateReply(replys replys) {
-            String sql = "update sportapp.reply_sport set content=:comment,nickname=:name  where reply_id=:id";
+            String sql = "update sportapp.reply_sport set content=:content where reply_id=:reply_id";
             return new NamedParameterJdbcTemplate(jdbcTemplate).update(sql,new BeanPropertySqlParameterSource(replys));
         }
         public int deletereplys (String id){
@@ -40,7 +40,7 @@ public class ReplysOfSportDAO {
         }
     public List<replys> listReply(int parent_id)
     {
-        String sql="select * from sportapp.reply_sport where parent_id=?";
+        String sql="select * from sportapp.reply_sport where comment_id=?";
         List<replys> list =jdbcTemplate.query(sql,new Object[]{parent_id},new BeanPropertyRowMapper(replys.class));
         return list;
     }

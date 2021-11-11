@@ -1,13 +1,14 @@
 package ApplicationOfComments.Controller;
 
 import ApplicationOfComments.Model.comments;
-import ApplicationOfComments.Model.replys;
 import ApplicationOfComments.Service.CommentOfSportService;
-import ApplicationOfComments.Service.ReplyOfArtsService;
 import ApplicationOfComments.Util.GlobalReturnCode;
 import ApplicationOfComments.Util.JsonResult;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -39,7 +40,7 @@ public class CommentOfSportController {
     }
     @PostMapping("/delete")
     public JsonResult delete(HttpServletRequest httpServletRequest, @RequestBody Map<String,String> map){
-        int flag=commentService.delete((map.get(("id"))));
+        int flag=commentService.delete((map.get(("comment_id"))));
         if(flag==1){
             return new JsonResult(true,GlobalReturnCode.OPERA_SUCCESS);
         }else {
@@ -53,12 +54,12 @@ public class CommentOfSportController {
     }
     @PostMapping("/get")
     public JsonResult get(HttpServletRequest httpServletRequest,@RequestBody Map<String,String> map){
-        comments comments=commentService.get(map.get("id"));
+        comments comments=commentService.get(map.get("comment_id"));
         return new JsonResult(true,GlobalReturnCode.OPERA_SUCCESS,comments);
     }
     @PostMapping("/commentlist")
     public JsonResult ReplyList(HttpServletRequest httpServletRequest, @RequestBody Map<String, String> map) {
-        List<comments> list = commentService.commentsList(Integer.parseInt(map.get("id")));
+        List<comments> list = commentService.commentsList(Integer.parseInt(map.get("post_id")));
         return new JsonResult(true, GlobalReturnCode.OPERA_SUCCESS, list);
     }
 }

@@ -19,7 +19,7 @@ public class CommentOfArtsDAO {
         return new NamedParameterJdbcTemplate(jdbcTemplate).update(sql,new BeanPropertySqlParameterSource(comments));
     }
     public int updatecomment(comments comments) {
-        String sql = "update sportapp.comment_arts set content=:comment,nickname=:name  where comment_id=:id";
+        String sql = "update sportapp.comment_arts set content=:content where comment_id=:comment_id";
         return new NamedParameterJdbcTemplate(jdbcTemplate).update(sql,new BeanPropertySqlParameterSource(comments));
     }
     public int deletecomment (String id){
@@ -40,7 +40,7 @@ public class CommentOfArtsDAO {
     }
     public List<comments> listReply(int post_id)
     {
-        String sql="select * from sportapp.reply_sport where parent_id=?";
+        String sql="select * from sportapp.reply_sport where comment_id=?";
         List<comments> list =jdbcTemplate.query(sql,new Object[]{post_id},new BeanPropertyRowMapper(comments.class));
         return list;
     }
