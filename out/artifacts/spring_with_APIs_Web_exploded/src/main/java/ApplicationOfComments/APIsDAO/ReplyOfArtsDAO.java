@@ -15,7 +15,7 @@ public class ReplyOfArtsDAO {
     private JdbcTemplate jdbcTemplate;
 
     public int addReply(replys replys){
-        String sql="insert into sportapp.reply_arts(reply_id,nickname,content,parent_id) values(:reply_id,:nickname,:content,:parent_id)";
+        String sql="insert into sportapp.reply_arts(reply_id,nickname,content,comment_id,parent_id) values(:reply_id,:nickname,:content,:parent_id,:comment_id)";
         return new NamedParameterJdbcTemplate(jdbcTemplate).update(sql,new BeanPropertySqlParameterSource(replys));
     }
     public int updateReply(replys replys) {

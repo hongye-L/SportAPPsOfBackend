@@ -52,7 +52,7 @@ public class PostOfArtsController {
     @PostMapping("/list")
     public JsonResult list(HttpServletRequest httpServletRequest) {
         List<POSTs> list = postService.getlist();
-        return new JsonResult(true, GlobalReturnCode.OPERA_SUCCESS, list);
+        return new JsonResult(true, GlobalReturnCode.OPERA_SUCCESS,list);
     }
 
     @PostMapping("/get")

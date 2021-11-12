@@ -4,19 +4,19 @@ public class JsonResult {
     /*
     成功没有？
      */
-    public boolean success;
+    private boolean success;
     /*
     消息
      */
-    public String message;
+    private String message;
     /*
     返回码
      */
-    public String code;
+    private String code;
     /*
     其他东西
      */
-    public  Object object;
+    private Object items;
 
     public void setCode(String code) {
         this.code = code;
@@ -34,16 +34,25 @@ public class JsonResult {
         this.success = success;
     }
 
-    public void setObject(Object object) {
-        this.object = object;
+    public void setObjects(Object items) {
+        this.items =items;
     }
 
-    public Object getObject() {
-        return object;
+    public Object getItems() {
+        return items;
     }
-    public JsonResult (boolean success,String code,Object object){
+
+    public void setItems(Object items) {
+        this.items = items;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public JsonResult (boolean success, String code, Object items){
         this(success,code);
-        this.object=object;
+        this.items= items;
         this.message=ReturnCodeUtil.getMsg(code);
     }
     /*
