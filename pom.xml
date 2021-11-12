@@ -108,6 +108,17 @@
             <version>2.4</version>
             <classifier>jdk15</classifier>
         </dependency>
+            <dependency>
+                <groupId>redis.clients</groupId>
+                <artifactId>jedis</artifactId>
+                <version>2.7.1</version><!--版本号-->
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>3.3.2</version><!--版本号-->
+            </dependency>
+
     </dependencies>
 
     <build>
