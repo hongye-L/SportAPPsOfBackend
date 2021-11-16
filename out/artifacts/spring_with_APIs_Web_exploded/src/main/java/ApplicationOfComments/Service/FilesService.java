@@ -1,72 +1,70 @@
 package ApplicationOfComments.Service;
 
-import ApplicationOfComments.Util.GlobalException;
-import ApplicationOfComments.Util.ReturnMessage;
-import net.sf.json.JSONObject;
+import ApplicationOfComments.errors.StorageException;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.*;
-import java.util.List;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+import java.util.Objects;
+
 @Service
+@Component
 public class FilesService {
-    public void Download(String name, HttpServletResponse response) throws Exception {
-        File file = new File("logs" + File.separator + name);
+    private Path fileStorageLocation; // 文件在本地存储的地址
 
-        if (!file.exists()) {
-            throw new GlobalException(name + "文件不存在");
-        }
-        response.setContentType("application/force-download");
-        response.addHeader("Content-Disposition", "attachment;fileName=" + name);
-        response.setContentLength((int) file.length());
-
-        byte[] buffer = new byte[1024];
-        try (FileInputStream fis = new FileInputStream(file);
-             BufferedInputStream bis = new BufferedInputStream(fis)) {
-            OutputStream os = response.getOutputStream();
-
-            int i = bis.read(buffer);
-            while (i != -1) {
-                os.write(buffer, 0, i);
-                i = bis.read(buffer);
-            }
+    public void FileService(String path) {
+        this.fileStorageLocation = Paths.get(path).toAbsolutePath().normalize();
+        try {
+            Files.createDirectories(this.fileStorageLocation);
+        } catch (IOException e) {
+            throw new StorageException("Could not create the directory", e);
         }
     }
 
-    public JSONObject Upload(MultipartFile file) throws Exception {
-        if (file == null || file.isEmpty()) {
-            throw new GlobalException("未选择需上传的文件");
-        }
-
-        String filePath = new File("logs_app").getAbsolutePath();
-        File fileUpload = new File(filePath);
-        if (!fileUpload.exists()) {
-            fileUpload.mkdirs();
-        }
-
-        fileUpload = new File(filePath, file.getOriginalFilename());
-        if (fileUpload.exists()) {
-            throw new GlobalException("上传的文件已存在");
-        }
+    /**
+     * 存储文件到系统
+     * @param file 文件
+     * @return 文件名
+     */
+    public String storeFile(MultipartFile file) {
+        // Normalize file name
+        String fileName = StringUtils.cleanPath((Objects.requireNonNull(file.getOriginalFilename())));
 
         try {
-            file.transferTo(fileUpload);
-            return ReturnMessage.success();
-        } catch (IOException e) {
-            throw new GlobalException("上传文件到服务器失败：" + e.toString());
+            // Check if the file's name contains invalid characters
+            if(fileName.contains("..")) {
+                throw new StorageException("Sorry! Filename contains invalid path sequence " + fileName);
+            }
+
+            // Copy file to the target location (Replacing existing file with the same name)
+            Path targetLocation = this.fileStorageLocation.resolve(fileName);
+            Files.copy(file.getInputStream(), targetLocation, StandardCopyOption.REPLACE_EXISTING);
+            return fileName;
+        } catch (IOException ex) {
+            throw new StorageException("Could not store file " + fileName + ". Please try again!", ex);
         }
     }
 
-    public JSONObject Uploads(HttpServletRequest request) throws Exception {
-        List<MultipartFile> files = ((MultipartHttpServletRequest) request).getFiles("file");
-
-        for (MultipartFile file : files) {
-            Upload(file);
+    public Resource loadFileAsResource(String fileName) {
+        try {
+            Path filePath = this.fileStorageLocation.resolve(fileName).normalize();
+            Resource resource = new UrlResource(filePath.toUri());
+            if(resource.exists()) {
+                return resource;
+            } else {
+                throw new StorageException("File not found " + fileName);
+            }
+        } catch (MalformedURLException ex) {
+            throw new StorageException("File not found " + fileName, ex);
         }
-
-        return ReturnMessage.success();
     }
 }
