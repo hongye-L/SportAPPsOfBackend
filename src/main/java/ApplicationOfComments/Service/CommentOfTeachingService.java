@@ -26,6 +26,6 @@ public class CommentOfTeachingService {
         return commentDAO.list();
     }
     public List<comments> commentsList(int post_id){
-        return commentDAO.listReply(post_id);
+        return commentDAO.listComment(post_id);
     }
 }
