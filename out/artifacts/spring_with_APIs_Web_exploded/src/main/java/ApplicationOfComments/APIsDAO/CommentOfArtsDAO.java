@@ -15,7 +15,7 @@ public class CommentOfArtsDAO {
     private JdbcTemplate jdbcTemplate;
 
     public int addcomment(comments comments){
-        String sql="insert into sportapp.comment_arts(comment_id,nickname,content,floor,post_id) values(:comment_id,:nickname,:content,:floor,:post_id)";
+        String sql="insert into sportapp.comment_arts(nickname,content,post_id) values(:nickname,:content,:post_id)";
         return new NamedParameterJdbcTemplate(jdbcTemplate).update(sql,new BeanPropertySqlParameterSource(comments));
     }
     public int updatecomment(comments comments) {
@@ -38,9 +38,9 @@ public class CommentOfArtsDAO {
         List<comments> list =jdbcTemplate.query(sql,new BeanPropertyRowMapper<>(comments.class));
         return list;
     }
-    public List<comments> listReply(int post_id)
+    public List<comments> listComment(int post_id)
     {
-        String sql="select * from sportapp.reply_sport where comment_id=?";
+        String sql="select * from sportapp.comment_arts where post_id=?";
         List<comments> list =jdbcTemplate.query(sql,new Object[]{post_id},new BeanPropertyRowMapper(comments.class));
         return list;
     }

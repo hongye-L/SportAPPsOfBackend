@@ -1,7 +1,6 @@
 package ApplicationOfComments.Model;
 
 public class comments {
-    private int comment_id;
     private String id;
     private String nickname;
     private String content;
@@ -11,8 +10,9 @@ public class comments {
     private String time;
     private String user_avatar;
     private int post_id;
+    private int comment_id;
     public comments(){}
-    public comments(String id, String name, String content, String time, String user_avatar,int post_id,int floor,int goods,int replys){
+    public comments(String id, String name, String content, String time, String user_avatar,int post_id,int floor,int goods,int comment_id){
         this.id=id;
         this.nickname=name;
         this.content=content;
@@ -21,7 +21,7 @@ public class comments {
         this.post_id=post_id;
         this.floor=floor;
         this.goods=goods;
-        this.replys=replys;
+        this.comment_id=comment_id;
     }
 
     public String getId() {
@@ -69,14 +69,6 @@ public class comments {
 
     public int getPost_id() {
         return post_id;
-    }
-
-    public int getComment_id() {
-        return comment_id;
-    }
-
-    public void setComment_id(int comment_id) {
-        this.comment_id = comment_id;
     }
 
     public void setContent(String content) {

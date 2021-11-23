@@ -63,7 +63,7 @@ public class CommentOfArtsController {
 
     @PostMapping("/commentlist")
     public JsonResult List(HttpServletRequest httpServletRequest, @RequestBody Map<String, String> map) {
-        List<comments> list = commentService.commentsList(Integer.parseInt(map.get("postt_id")));
+        List<comments> list = commentService.commentsList(Integer.parseInt(map.get("post_id")));
         return new JsonResult(true, GlobalReturnCode.OPERA_SUCCESS, list);
     }
 }
