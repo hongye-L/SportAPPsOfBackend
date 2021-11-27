@@ -2,6 +2,7 @@ package ApplicationOfComments.errors;
 
 /**
  * The type Storage exception.
+ * @author 竑也
  */
 public class StorageException extends RuntimeException{
 
