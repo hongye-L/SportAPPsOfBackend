@@ -21,7 +21,7 @@ public class PostOfTeachingDAO {
     /**
      * Addcomment int.
      *
-     * @param posTs the pos ts
+     * @param posTs the posts
      * @return the int
      */
     public int addcomment(POSTs posTs){
@@ -35,7 +35,7 @@ public class PostOfTeachingDAO {
     /**
      * Updatecomment int.
      *
-     * @param posTs the pos ts
+     * @param posTs the posts
      * @return the int
      */
     public int updatecomment(POSTs posTs) {

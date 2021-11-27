@@ -17,6 +17,10 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+/**
+ * The type Files controller.
+ */
 @RestController
 public class FilesController {
     private static final Logger logger = LoggerFactory.getLogger(FilesController.class);
@@ -24,6 +28,12 @@ public class FilesController {
     @Autowired
     private FilesService fileService;
 
+    /**
+     * Upload file files.
+     *
+     * @param multipartFile the multipart file
+     * @return the files
+     */
     @PostMapping("/uploadFile")
     public Files uploadFile(@RequestParam(value ="file") MultipartFile multipartFile){
         String fileName = fileService.storeFile(multipartFile);
@@ -36,6 +46,12 @@ public class FilesController {
                 multipartFile.getContentType(), multipartFile.getSize());
     }
 
+    /**
+     * Upload multiple files list.
+     *
+     * @param files the files
+     * @return the list
+     */
     @PostMapping("/uploadMultipleFiles")
     public List<Files> uploadMultipleFiles(@RequestParam("files") MultipartFile[] files) {
         List<Files> list = new ArrayList<>();
@@ -52,6 +68,13 @@ public class FilesController {
                 .collect(Collectors.toList());*/
     }
 
+    /**
+     * Download file response entity.
+     *
+     * @param fileName the file name
+     * @param request  the request
+     * @return the response entity
+     */
     @GetMapping("/downloadFile/{fileName:.*}")
     public ResponseEntity<Resource> downloadFile(@PathVariable String fileName, HttpServletRequest request) {
         Resource resource = fileService.loadFileAsResource(fileName);
