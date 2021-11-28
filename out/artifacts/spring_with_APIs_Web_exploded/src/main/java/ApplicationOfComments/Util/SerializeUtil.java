@@ -5,12 +5,15 @@ import java.io.ByteArrayOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
+/**
+ * The type Serialize util.
+ */
 public class SerializeUtil {
     /**
      * 序列化
      *
      * @param object 对象
-     * @return 字节流
+     * @return 字节流 byte [ ]
      */
     public static byte[] serialize(Object object) {
         ObjectOutputStream oos = null;
@@ -31,7 +34,7 @@ public class SerializeUtil {
      * 反序列化
      *
      * @param bytes 字节流
-     * @return 对象
+     * @return 对象 object
      */
     public static Object deserialize(byte[] bytes) {
         ByteArrayInputStream bais = null;

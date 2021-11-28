@@ -16,11 +16,19 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.Objects;
 
+/**
+ * The type Files service.
+ */
 @Service
 @Component
 public class FilesService {
     private Path fileStorageLocation; // 文件在本地存储的地址
 
+    /**
+     * File service.
+     *
+     * @param path the path
+     */
     public void FileService(String path) {
         this.fileStorageLocation = Paths.get(path).toAbsolutePath().normalize();
         try {
@@ -32,8 +40,9 @@ public class FilesService {
 
     /**
      * 存储文件到系统
+     *
      * @param file 文件
-     * @return 文件名
+     * @return 文件名 string
      */
     public String storeFile(MultipartFile file) {
         // Normalize file name
@@ -54,6 +63,12 @@ public class FilesService {
         }
     }
 
+    /**
+     * Load file as resource resource.
+     *
+     * @param fileName the file name
+     * @return the resource
+     */
     public Resource loadFileAsResource(String fileName) {
         try {
             Path filePath = this.fileStorageLocation.resolve(fileName).normalize();

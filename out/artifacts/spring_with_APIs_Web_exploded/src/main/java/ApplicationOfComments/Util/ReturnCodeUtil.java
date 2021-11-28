@@ -2,6 +2,9 @@ package ApplicationOfComments.Util;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * The type Return code util.
+ */
 public class ReturnCodeUtil {
     //定义返回码及文字数据
     private static Map<String, String> returnCodeMap=new HashMap<>();
@@ -30,7 +33,7 @@ public class ReturnCodeUtil {
      * 获取返回的中文说明
      *
      * @param resultCode 返回码
-     * @return 中文名称
+     * @return 中文名称 msg
      */
     public static String getMsg(String resultCode) {
         if (returnCodeMap.containsKey(resultCode)) {

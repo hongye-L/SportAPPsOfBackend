@@ -8,12 +8,22 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
 
+/**
+ * The type Redis util.
+ */
 @Component
 public class RedisUtil {
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
     @Autowired
     private RedisTemplate<?,?> redisTemplate;
+
+    /**
+     * Set.
+     *
+     * @param key   the key
+     * @param value the value
+     */
     /*
      * 设置key和对象的value
      *
@@ -30,12 +40,13 @@ public class RedisUtil {
             }
         });
     }
+
     /**
      * 设置key和value，并加上时间（秒）
      *
-     * @param key key
+     * @param key   key
      * @param value value
-     * @param l 时间
+     * @param l     时间
      */
     public void set(final String key, Object value, final long l) {
         final byte[] vbytes = SerializeUtil.serialize(value);
@@ -47,6 +58,15 @@ public class RedisUtil {
             }
         });
     }
+
+    /**
+     * Get t.
+     *
+     * @param <T>      the type parameter
+     * @param key      the key
+     * @param elements the elements
+     * @return the t
+     */
     /*
      * 根据key来取值
      *
@@ -69,6 +89,12 @@ public class RedisUtil {
             }
         });
     }
+
+    /**
+     * Delete.
+     *
+     * @param key the key
+     */
     /*
      * 根据key删除该值
      *

@@ -7,9 +7,20 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.OutputStream;
 import java.nio.file.FileAlreadyExistsException;
+
+/**
+ * The type Download service.
+ */
 @Service
 public class DownloadService {
-        public void Download(String name, HttpServletResponse response) throws Exception {
+    /**
+     * Download.
+     *
+     * @param name     the name
+     * @param response the response
+     * @throws Exception the exception
+     */
+    public void Download(String name, HttpServletResponse response) throws Exception {
             File file = new File("D:\\c5" + File.separator + name);
             if (!file.exists()) {
                 throw new FileAlreadyExistsException(name);

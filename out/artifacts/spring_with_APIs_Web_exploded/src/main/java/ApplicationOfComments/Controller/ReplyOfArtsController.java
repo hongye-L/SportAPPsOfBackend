@@ -13,12 +13,23 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Map;
+
+/**
+ * The type Reply of arts controller.
+ */
 @RestController
 @RequestMapping("/replyOfArts")
 public class ReplyOfArtsController {
     @Autowired
     private ReplyOfArtsService replyService;
 
+    /**
+     * Add json result.
+     *
+     * @param httpServletRequest the http servlet request
+     * @param replys             the replys
+     * @return the json result
+     */
     @PostMapping("/add")
     public JsonResult add(HttpServletRequest httpServletRequest, @RequestBody replys replys){
         int flag=replyService.add(replys);
@@ -28,6 +39,14 @@ public class ReplyOfArtsController {
             return new JsonResult(false,GlobalReturnCode.OPERA_FAILURE);
         }
     }
+
+    /**
+     * Update json result.
+     *
+     * @param httpServletRequest the http servlet request
+     * @param replys             the replys
+     * @return the json result
+     */
     @PostMapping("/update")
     public JsonResult update(HttpServletRequest httpServletRequest,@RequestBody replys replys){
         int flag=replyService.update(replys);
@@ -37,6 +56,14 @@ public class ReplyOfArtsController {
             return new JsonResult(false,GlobalReturnCode.OPERA_FAILURE);
         }
     }
+
+    /**
+     * Delete json result.
+     *
+     * @param httpServletRequest the http servlet request
+     * @param map                the map
+     * @return the json result
+     */
     @PostMapping("/delete")
     public JsonResult delete(HttpServletRequest httpServletRequest, @RequestBody Map<String,String> map){
         int flag=replyService.delete((map.get(("reply_id"))));
@@ -46,16 +73,39 @@ public class ReplyOfArtsController {
             return new JsonResult(false,GlobalReturnCode.OPERA_FAILURE);
         }
     }
+
+    /**
+     * List json result.
+     *
+     * @param httpServletRequest the http servlet request
+     * @return the json result
+     */
     @PostMapping("/list")
     public JsonResult list(HttpServletRequest httpServletRequest){
         List<replys> list=replyService.getlist();
         return new JsonResult(true,GlobalReturnCode.OPERA_SUCCESS,list);
     }
+
+    /**
+     * Get json result.
+     *
+     * @param httpServletRequest the http servlet request
+     * @param map                the map
+     * @return the json result
+     */
     @PostMapping("/get")
     public JsonResult get(HttpServletRequest httpServletRequest,@RequestBody Map<String,String> map){
         replys replys=replyService.get(map.get("reply_id"));
         return new JsonResult(true,GlobalReturnCode.OPERA_SUCCESS,replys);
     }
+
+    /**
+     * Reply list json result.
+     *
+     * @param httpServletRequest the http servlet request
+     * @param map                the map
+     * @return the json result
+     */
     @PostMapping("/replylist")
     public JsonResult ReplyList(HttpServletRequest httpServletRequest,@RequestBody Map<String,String> map){
         List<replys> list=replyService.replysList(Integer.parseInt(map.get("comment_id")));

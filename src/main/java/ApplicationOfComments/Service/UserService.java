@@ -7,6 +7,7 @@
 
     /**
      * The type User service.
+     * @author 竑也
      */
     @Service
 public class UserService {
@@ -17,12 +18,12 @@ public class UserService {
         /**
          * Get by username users.
          *
-         * @param username the username
+         * @param user_Id the userId
          * @param password the password
          * @return the users
          */
-        public Users getByUsername(String username,String password){
-            return userDao.getByUsername(username,password);
+        public Users getByUsername(String user_Id, String password){
+            return userDao.getByUsername(user_Id,password);
         }
 
         /**
@@ -44,4 +45,5 @@ public class UserService {
         public Users list(String username){
             return userDao.userlist(username);
         }
+        public int updateUsers(Users users){return userDao.updateUsers(users);}
 }

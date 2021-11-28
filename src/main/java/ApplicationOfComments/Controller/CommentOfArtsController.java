@@ -16,6 +16,7 @@ import java.util.Map;
 
 /**
  * The type Comment of arts controller.
+ * @author 竑也
  */
 @RestController
 @RequestMapping("/commentOfArts")

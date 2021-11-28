@@ -16,6 +16,7 @@ import java.util.Map;
 
 /**
  * The type Post of teaching controller.
+ * @author 竑也
  */
 @RestController
 @RequestMapping("/PostOfTeaching")

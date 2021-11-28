@@ -6,9 +6,8 @@ package ApplicationOfComments.Model;
 public class Users {
     private String username;
     private String password;
-    private int user_id;
+    private String user_Id;
     private String nickname;
-
     /**
      * Gets password.
      *
@@ -19,9 +18,13 @@ public class Users {
     }
     @Override
     public String toString() {
-        return this.getClass().getName()+"{user_id:"+user_id+"nickname:"+nickname+"username"+username+"password"+password+"}";
+        return this.getClass().getName()+"{user_id:"+user_Id+"nickname:"+username+"username"+username+"password"+password+"}";
     }
-
+    public Users(String user_name,String password,String user_id){
+        this.username=user_name;
+        this.user_Id=user_id;
+        this.password=password;
+    }
     /**
      * Gets username.
      *
@@ -54,8 +57,8 @@ public class Users {
      *
      * @return the user id
      */
-    public int getUser_id() {
-        return user_id;
+    public String getUser_id() {
+        return user_Id;
     }
 
     /**
@@ -63,8 +66,8 @@ public class Users {
      *
      * @param user_id the user id
      */
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    public void setUser_id(String user_id) {
+        this.user_Id = user_id;
     }
 
     /**
