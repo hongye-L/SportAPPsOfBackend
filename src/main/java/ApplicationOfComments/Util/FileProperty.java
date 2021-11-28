@@ -4,6 +4,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
  * The type File property.
+ * @author 竑也
  */
 @ConfigurationProperties(prefix = "file")
 public class FileProperty {

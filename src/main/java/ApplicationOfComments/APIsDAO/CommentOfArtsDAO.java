@@ -12,6 +12,7 @@ import java.util.List;
 
 /**
  * The type Comment of arts dao.
+ * @author 竑也
  */
 @Repository
 public class CommentOfArtsDAO {

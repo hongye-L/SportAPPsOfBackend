@@ -10,7 +10,7 @@
      * @author 竑也
      */
     @Service
-public class UserService {
+    public class UserService {
 
         @Autowired
         private UserDao userDao;

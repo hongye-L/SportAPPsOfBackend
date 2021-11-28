@@ -15,6 +15,7 @@ import java.util.Map;
 
 /**
  * The type Check in controller.
+ * @author 竑也
  */
 @RestController
 @RequestMapping("/")

@@ -12,6 +12,7 @@ import java.util.List;
 
 /**
  * The type Pos ts of sport dao.
+ * @author 竑也
  */
 @Repository
 public class POSTsOfSportDAO {

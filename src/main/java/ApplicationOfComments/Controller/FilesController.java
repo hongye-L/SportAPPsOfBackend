@@ -20,6 +20,7 @@ import java.util.List;
 
 /**
  * The type Files controller.
+ * @author 竑也
  */
 @RestController
 public class FilesController {
@@ -63,7 +64,7 @@ public class FilesController {
         }
         return list;
         //简单写法
-     /* return Arrays.stream(files)
+        /* return Arrays.stream(files)
                 .map(this::uploadFile)
                 .collect(Collectors.toList());*/
     }
