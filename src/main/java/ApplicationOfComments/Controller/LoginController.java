@@ -24,7 +24,7 @@ public class LoginController {
     private UserService userService;
 
     /**
-     * Checklogin json result.
+     * Checking json result.
      *
      * @param httpServletRequest the http servlet request
      * @param map                the map
@@ -73,9 +73,18 @@ public class LoginController {
         Users users=userService.list(map.get("username"));
         return new JsonResult(true,GlobalReturnCode.OPERA_SUCCESS,users);
     }
-    @PostMapping("/userUpdate")
+    @PostMapping("/updatePassword")
     public JsonResult userUpdate(HttpServletRequest httpServletRequest,@RequestBody Users users){
-        int flag=userService.updateUsers(users);
+        int flag=userService.updatePassword(users);
+        if (flag == 1) {
+            return new JsonResult(true, GlobalReturnCode.OPERA_SUCCESS);
+            //更改成功！
+        } else {
+            return new JsonResult(false, GlobalReturnCode.OPERA_FAILURE);
+        }
+    }
+    public JsonResult userUpdateAvatar(HttpServletRequest httpServletRequest,@RequestBody Users users){
+        int flag=userService.updateUserAvatar(users);
         if (flag == 1) {
             return new JsonResult(true, GlobalReturnCode.OPERA_SUCCESS);
             //更改成功！

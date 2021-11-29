@@ -62,8 +62,12 @@ public class UserDao{
      * @param users the users
      * @return the int
      */
-    public int updateUsers(Users users){
+    public int updatePassword(Users users){
         String sql="update timeapp.infos set user_password=:password where user_id=:user_id";
+        return new NamedParameterJdbcTemplate(jdbcTemplate).update(sql,new BeanPropertySqlParameterSource(users));
+    }
+    public int updateUserAvatar(Users users){
+        String sql="update timeapp.infos set user_avatar=:user_avatar where user_id=:user_id";
         return new NamedParameterJdbcTemplate(jdbcTemplate).update(sql,new BeanPropertySqlParameterSource(users));
     }
 }

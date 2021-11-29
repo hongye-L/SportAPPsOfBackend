@@ -7,6 +7,7 @@
 
     /**
      * The type User service.
+     *
      * @author 竑也
      */
     @Service
@@ -18,7 +19,7 @@
         /**
          * Get by username users.
          *
-         * @param user_Id the userId
+         * @param user_Id  the userId
          * @param password the password
          * @return the users
          */
@@ -45,5 +46,20 @@
         public Users list(String username){
             return userDao.userlist(username);
         }
-        public int updateUsers(Users users){return userDao.updateUsers(users);}
+
+        /**
+         * Update password int.
+         *
+         * @param users the users
+         * @return the int
+         */
+        public int updatePassword(Users users){return userDao.updatePassword(users);}
+
+        /**
+         * Update user avatar int.
+         *
+         * @param users the users
+         * @return the int
+         */
+        public int updateUserAvatar(Users users){return userDao.updateUserAvatar(users);}
 }

@@ -12,6 +12,7 @@ import java.util.List;
 
 /**
  * The type Post of teaching dao.
+ * @author 竑也
  */
 @Repository
 public class PostOfTeachingDAO {
@@ -26,9 +27,9 @@ public class PostOfTeachingDAO {
      */
     public int addcomment(POSTs posTs){
         String sql="insert into sportapp.post_teaching(post_id,nickname,user_avatar,content,post_title,picture_1" +
-                ",picture_2,picture_3,picture_4,picture_5,picture_6,goods) " +
+                ",picture_2,picture_3,picture_4,picture_5,picture_6,goods,videos) " +
                 "values(:post_id,:nickname,:user_avatar,:content,:post_title,:picture_1,:picture_2" +
-                ",:picture_3,:picture_4,:picture_5,:picture_6,:goods)";
+                ",:picture_3,:picture_4,:picture_5,:picture_6,:goods,:videos)";
         return new NamedParameterJdbcTemplate(jdbcTemplate).update(sql,new BeanPropertySqlParameterSource(posTs));
     }
 

@@ -1,6 +1,6 @@
 package ApplicationOfComments.Service;
 
-import ApplicationOfComments.APIsDAO.POSTsOfSportDAO;
+import ApplicationOfComments.APIsDAO.PostsOfSportDAO;
 import ApplicationOfComments.Model.POSTs;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,7 +16,7 @@ public class PostOfSportService {
      * The Pos ts dao.
      */
     @Autowired
-    POSTsOfSportDAO posTsDAO;
+    PostsOfSportDAO posTsDAO;
 
     /**
      * Add int.
