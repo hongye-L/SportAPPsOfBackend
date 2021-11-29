@@ -12,6 +12,7 @@ import java.util.List;
 
 /**
  * The type Comments of sport dao.
+ * @author 竑也
  */
 @Repository
 public class CommentsOfSportDao {

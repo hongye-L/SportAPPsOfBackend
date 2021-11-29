@@ -12,6 +12,7 @@ import java.util.List;
 
 /**
  * The type User dao.
+ *
  * @author 竑也
  */
 @Repository
@@ -22,7 +23,7 @@ public class UserDao{
     /**
      * Get by username users.
      *
-     * @param userid the userid
+     * @param userid   the userid
      * @param password the password
      * @return the users
      */
@@ -44,7 +45,7 @@ public class UserDao{
     }
 
     /**
-     * Userlist users.
+     * Userslist users.
      *
      * @param username the username
      * @return the users
@@ -53,5 +54,20 @@ public class UserDao{
         String sql="select * from timeapp.infos where user_name=?";
         List<Users> list =jdbcTemplate.query(sql,new Object[]{username},new BeanPropertyRowMapper(Users.class));
         return list.size() > 0 ? list.get(0) : null;
+    }
+
+    /**
+     * Update users int.
+     *
+     * @param users the users
+     * @return the int
+     */
+    public int updatePassword(Users users){
+        String sql="update timeapp.infos set user_password=:password where user_id=:user_id";
+        return new NamedParameterJdbcTemplate(jdbcTemplate).update(sql,new BeanPropertySqlParameterSource(users));
+    }
+    public int updateUserAvatar(Users users){
+        String sql="update timeapp.infos set user_avatar=:user_avatar where user_id=:user_id";
+        return new NamedParameterJdbcTemplate(jdbcTemplate).update(sql,new BeanPropertySqlParameterSource(users));
     }
 }

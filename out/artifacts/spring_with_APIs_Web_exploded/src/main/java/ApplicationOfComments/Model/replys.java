@@ -1,7 +1,8 @@
 package ApplicationOfComments.Model;
 
 /**
- * The type Replys.
+ * The type replys.
+ * @author 竑也
  */
 public class replys {
     private String time;

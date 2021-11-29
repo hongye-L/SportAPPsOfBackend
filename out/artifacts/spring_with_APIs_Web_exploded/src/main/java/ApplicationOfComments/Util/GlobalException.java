@@ -2,6 +2,7 @@ package ApplicationOfComments.Util;
 
 /**
  * The type Global exception.
+ * @author 竑也
  */
 public class GlobalException extends Exception{
     private static final long serialVersionUID = -238091758285157331L;

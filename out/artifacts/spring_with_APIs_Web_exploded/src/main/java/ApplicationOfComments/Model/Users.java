@@ -2,12 +2,16 @@ package ApplicationOfComments.Model;
 
 /**
  * The type Users.
+ *
+ * @author 竑也
  */
 public class Users {
     private String username;
     private String password;
-    private String user_Id;
+    private String user_id;
     private String nickname;
+    private String user_avatar;
+
     /**
      * Gets password.
      *
@@ -18,13 +22,37 @@ public class Users {
     }
     @Override
     public String toString() {
-        return this.getClass().getName()+"{user_id:"+user_Id+"nickname:"+username+"username"+username+"password"+password+"}";
+        return this.getClass().getName()+"{user_id:"+user_id+"nickname:"+username+"username"+username+"password"+password+"user_avatar"+user_avatar+"}";
     }
-    public Users(String user_name,String password,String user_id){
+
+    /**
+     * Instantiates a new Users.
+     *
+     * @param user_name   the user name
+     * @param password    the password
+     * @param user_id     the user id
+     * @param user_avatar the user avatar
+     */
+    public Users(String user_name,String password,String user_id,String user_avatar){
         this.username=user_name;
-        this.user_Id=user_id;
+        this.user_id=user_id;
         this.password=password;
+        this.user_avatar=user_avatar;
     }
+
+    /**
+     * Sets user avatar.
+     *
+     * @param user_avatar the user avatar
+     */
+    public void setUser_avatar(String user_avatar) {
+        this.user_avatar = user_avatar;
+    }
+
+    public String getUser_avatar() {
+        return user_avatar;
+    }
+
     /**
      * Gets username.
      *
@@ -58,7 +86,7 @@ public class Users {
      * @return the user id
      */
     public String getUser_id() {
-        return user_Id;
+        return user_id;
     }
 
     /**
@@ -67,7 +95,7 @@ public class Users {
      * @param user_id the user id
      */
     public void setUser_id(String user_id) {
-        this.user_Id = user_id;
+        this.user_id = user_id;
     }
 
     /**

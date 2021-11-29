@@ -2,6 +2,7 @@ package ApplicationOfComments.Model;
 
 /**
  * The type Comments.
+ * @author 竑也
  */
 public class comments {
     private String id;

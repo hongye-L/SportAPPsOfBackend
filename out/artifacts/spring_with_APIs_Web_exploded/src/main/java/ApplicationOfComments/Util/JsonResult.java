@@ -108,8 +108,6 @@ public class JsonResult {
 
     /**
      * Instantiates a new Json result.
-     */
-/*
     啥都没有的构造方法
      */
     public JsonResult(){}
@@ -141,9 +139,7 @@ public class JsonResult {
      * @param success the success
      * @param code    the code
      * @param message the message
-     */
-/*
-    这里的message由传入的message决定。
+     *这里的message由传入的message决定。
      */
     public JsonResult(boolean success,String code,String message){
         this(success);

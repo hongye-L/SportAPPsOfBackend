@@ -4,6 +4,7 @@ import net.sf.json.JSONObject;
 
 /**
  * The type Return message.
+ * @author 竑也
  */
 public class ReturnMessage {
     private ReturnMessage() {

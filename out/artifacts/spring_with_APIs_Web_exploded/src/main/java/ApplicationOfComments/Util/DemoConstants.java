@@ -7,7 +7,7 @@ public class DemoConstants {
     /**
      * The constant SIGN.
      */
-//一些常量
+    //一些常量
     public static final String SIGN = "sign";
     /**
      * The constant TIMESTAMP.

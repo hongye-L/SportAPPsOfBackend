@@ -12,6 +12,7 @@ import java.util.List;
 
 /**
  * The type Post of arts dao.
+ * @author 竑也
  */
 @Repository
 public class PostOfArtsDAO {
@@ -26,9 +27,9 @@ public class PostOfArtsDAO {
      */
     public int addcomment(POSTs posTs){
         String sql="insert into sportapp.post_arts(post_id,nickname,user_avatar,content,post_title,picture_1" +
-                ",picture_2,picture_3,picture_4,picture_5,picture_6,goods) " +
+                ",picture_2,picture_3,picture_4,picture_5,picture_6,goods,videos) " +
                 "values(:post_id,:nickname,:user_avatar,:content,:post_title,:picture_1,:picture_2" +
-                ",:picture_3,:picture_4,:picture_5,:picture_6,:goods)";
+                ",:picture_3,:picture_4,:picture_5,:picture_6,:goods,:videos)";
         return new NamedParameterJdbcTemplate(jdbcTemplate).update(sql,new BeanPropertySqlParameterSource(posTs));
     }
 

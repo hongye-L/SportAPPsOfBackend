@@ -25,7 +25,6 @@ public class GlobalReturnCode {
      * 操作失败
      */
     public static final String OPERA_FAILURE = "20001";
-
     /**
      * 无权限
      */

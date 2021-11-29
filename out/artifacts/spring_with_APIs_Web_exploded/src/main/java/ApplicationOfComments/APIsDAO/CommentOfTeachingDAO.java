@@ -12,6 +12,7 @@ import java.util.List;
 
 /**
  * The type Comment of teaching dao.
+ * @author 竑也
  */
 @Repository
 public class CommentOfTeachingDAO {
@@ -19,7 +20,7 @@ public class CommentOfTeachingDAO {
     private JdbcTemplate jdbcTemplate;
 
     /**
-     * Addcomment int.
+     * Comment int.
      *
      * @param comments the comments
      * @return the int
