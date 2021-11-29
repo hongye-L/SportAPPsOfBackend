@@ -2,6 +2,7 @@ package ApplicationOfComments.Model;
 
 /**
  * The type Pos ts.
+ * @author 竑也
  */
 public class POSTs {
     private int post_id;

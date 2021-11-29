@@ -83,6 +83,7 @@ public class LoginController {
             return new JsonResult(false, GlobalReturnCode.OPERA_FAILURE);
         }
     }
+    @PostMapping("/updateUserAvatar")
     public JsonResult userUpdateAvatar(HttpServletRequest httpServletRequest,@RequestBody Users users){
         int flag=userService.updateUserAvatar(users);
         if (flag == 1) {

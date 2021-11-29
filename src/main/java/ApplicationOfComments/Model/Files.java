@@ -2,6 +2,7 @@ package ApplicationOfComments.Model;
 
 /**
  * The type Files.
+ * @author 竑也
  */
 public class Files {
     private String fileName;
