@@ -28,7 +28,7 @@ public class Users {
     /**
      * Instantiates a new Users.
      *
-     * @param user_name   the user name
+     * @param user_name   the username
      * @param password    the password
      * @param user_id     the user id
      * @param user_avatar the user avatar

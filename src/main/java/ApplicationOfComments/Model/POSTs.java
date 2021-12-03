@@ -17,9 +17,9 @@ public class POSTs {
     private String picture_4;
     private String picture_5;
     private String picture_6;
-    private int goods;
-    private int replys;
-
+    private Boolean goods;
+    private Integer replys;
+    private String videos;
     /**
      * Instantiates a new Pos ts.
      *
@@ -38,9 +38,9 @@ public class POSTs {
      * @param goods       the goods
      * @param replys      the replys
      */
-    public POSTs(int post_id,String nickname,String user_avatar,String time,String post_title,String content,
-                 String picture_1,String picture_2,String picture_3,
-                 String picture_4,String picture_5,String picture_6,int goods,int replys){
+    public POSTs(int post_id, String nickname, String user_avatar, String time, String post_title, String content,
+                 String picture_1, String picture_2, String picture_3,
+                 String picture_4, String picture_5, String picture_6, Boolean goods, Integer replys, String videos){
         this.post_id=post_id;
         this.nickname=nickname;
         this.user_avatar=user_avatar;
@@ -55,6 +55,7 @@ public class POSTs {
         this.picture_6=picture_6;
         this.goods=goods;
         this.replys=replys;
+        this.videos=videos;
     }
 
     /**
@@ -139,7 +140,7 @@ public class POSTs {
      *
      * @return the goods
      */
-    public int getGoods() {
+    public Boolean getGoods() {
         return goods;
     }
 
@@ -157,7 +158,7 @@ public class POSTs {
      *
      * @return the replys
      */
-    public int getReplys() {
+    public Integer getReplys() {
         return replys;
     }
 
@@ -238,7 +239,7 @@ public class POSTs {
      *
      * @param goods the goods
      */
-    public void setGoods(int goods) {
+    public void setGoods(Boolean goods) {
         this.goods = goods;
     }
 
@@ -310,7 +311,14 @@ public class POSTs {
      *
      * @param replys the replys
      */
-    public void setReplys(int replys) {
+    public void setReplys(Integer replys) {
         this.replys = replys;
+    }
+    public String getVideos() {
+        return videos;
+    }
+
+    public void setVideos(String videos) {
+        this.videos = videos;
     }
 }

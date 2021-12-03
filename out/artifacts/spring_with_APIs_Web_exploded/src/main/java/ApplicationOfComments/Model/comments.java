@@ -8,13 +8,13 @@ public class comments {
     private String id;
     private String nickname;
     private String content;
-    private int floor;
-    private int goods;
-    private int replys;
+    private String floor;
+    private String goods;
+    private String replys;
     private String time;
     private String user_avatar;
-    private int post_id;
-    private int comment_id;
+    private String post_id;
+    private String comment_id;
 
     /**
      * Instantiates a new Comments.
@@ -34,7 +34,7 @@ public class comments {
      * @param goods       the goods
      * @param comment_id  the comment id
      */
-    public comments(String id, String name, String content, String time, String user_avatar,int post_id,int floor,int goods,int comment_id){
+    public comments(String id, String name, String content, String time, String user_avatar,String post_id,String floor,String goods,String comment_id){
         this.id=id;
         this.nickname=name;
         this.content=content;
@@ -141,7 +141,7 @@ public class comments {
      *
      * @param post_id the post id
      */
-    public void setPost_id(int post_id) {
+    public void setPost_id(String post_id) {
         this.post_id = post_id;
     }
 
@@ -150,7 +150,7 @@ public class comments {
      *
      * @return the post id
      */
-    public int getPost_id() {
+    public String getPost_id() {
         return post_id;
     }
 
@@ -177,7 +177,7 @@ public class comments {
      *
      * @param replys the replys
      */
-    public void setReplys(int replys) {
+    public void setReplys(String replys) {
         this.replys = replys;
     }
 
@@ -186,7 +186,7 @@ public class comments {
      *
      * @param goods the goods
      */
-    public void setGoods(int goods) {
+    public void setGoods(String goods) {
         this.goods = goods;
     }
 
@@ -195,7 +195,7 @@ public class comments {
      *
      * @param floor the floor
      */
-    public void setFloor(int floor) {
+    public void setFloor(String floor) {
         this.floor = floor;
     }
 
@@ -204,7 +204,7 @@ public class comments {
      *
      * @return the replys
      */
-    public int getReplys() {
+    public String getReplys() {
         return replys;
     }
 
@@ -213,7 +213,7 @@ public class comments {
      *
      * @return the goods
      */
-    public int getGoods() {
+    public String getGoods() {
         return goods;
     }
 
@@ -222,7 +222,7 @@ public class comments {
      *
      * @return the floor
      */
-    public int getFloor() {
+    public String getFloor() {
         return floor;
     }
 

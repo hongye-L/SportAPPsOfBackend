@@ -29,7 +29,7 @@ public class PostsOfSportDAO {
         String sql="insert into sportapp.post_sport(post_id,nickname,user_avatar,content,post_title,picture_1" +
                 ",picture_2,picture_3,picture_4,picture_5,picture_6,goods,videos) " +
                 "values(:post_id,:nickname,:user_avatar,:content,:post_title,:picture_1,:picture_2" +
-                ",:picture_3,:picture_4,:picture_5,:picture_6,:goods,:video)";
+                ",:picture_3,:picture_4,:picture_5,:picture_6,:goods,:videos)";
         return new NamedParameterJdbcTemplate(jdbcTemplate).update(sql,new BeanPropertySqlParameterSource(posTs));
     }
 

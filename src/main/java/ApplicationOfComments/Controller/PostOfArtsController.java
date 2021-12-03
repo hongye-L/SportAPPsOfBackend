@@ -1,6 +1,7 @@
 package ApplicationOfComments.Controller;
 
 import ApplicationOfComments.Model.POSTs;
+import ApplicationOfComments.Model.PostGoods;
 import ApplicationOfComments.Service.PostOfArtsService;
 import ApplicationOfComments.Util.GlobalReturnCode;
 import ApplicationOfComments.Util.JsonResult;
@@ -98,5 +99,28 @@ public class PostOfArtsController {
     public JsonResult get(HttpServletRequest httpServletRequest, @RequestBody Map<String, String> map) {
         POSTs posTs=postService.get(map.get("post_id"));
         return new JsonResult(true, GlobalReturnCode.OPERA_SUCCESS,posTs);
+    }
+    @PostMapping("/addGoods")
+    public JsonResult addGoods(HttpServletRequest httpServletRequest, @RequestBody PostGoods postGoods) {
+        int flag = postService.addGoods(postGoods);
+        if (flag == 1) {
+            return new JsonResult(true, GlobalReturnCode.SAVE_SUCCESS);
+        } else {
+            return new JsonResult(false, GlobalReturnCode.OPERA_FAILURE);
+        }
+    }
+    @PostMapping("/deleteGoods")
+    public JsonResult delGoods(HttpServletRequest httpServletRequest, @RequestBody PostGoods postGoods) {
+        int flag = postService.deleteGoods(postGoods);
+        if (flag == 1) {
+            return new JsonResult(true, GlobalReturnCode.SAVE_SUCCESS);
+        } else {
+            return new JsonResult(false, GlobalReturnCode.OPERA_FAILURE);
+        }
+    }
+    @PostMapping("/getGoods")
+    public JsonResult getGoods(HttpServletRequest httpServletRequest, @RequestBody Map<String, String> map) {
+        PostGoods postGoods=postService.getGoods(map.get("post_id"),map.get("user_id"));
+        return new JsonResult(true, GlobalReturnCode.OPERA_SUCCESS,postGoods);
     }
 }

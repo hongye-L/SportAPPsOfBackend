@@ -6,10 +6,10 @@ package ApplicationOfComments.Model;
  */
 public class replys {
     private String time;
-    private int reply_id;
+    private String reply_id;
     private String nickname;
     private String content;
-    private int parent_id;
+    private String parent_id;
 
     /**
      * Instantiates a new Replys.
@@ -25,7 +25,7 @@ public class replys {
      * @param content   the content
      * @param parent_id the parent id
      */
-    public replys(String time,int reply_id,String nickname,String content,int parent_id){
+    public replys(String time, String reply_id, String nickname, String content, String parent_id){
         this.time=time;
         this.reply_id=reply_id;
         this.nickname=nickname;
@@ -57,7 +57,7 @@ public class replys {
      *
      * @param reply_id the reply id
      */
-    public void setReply_id(int reply_id) {
+    public void setReply_id(String reply_id) {
         this.reply_id = reply_id;
     }
 
@@ -66,7 +66,7 @@ public class replys {
      *
      * @return the reply id
      */
-    public int getReply_id() {
+    public String getReply_id() {
         return reply_id;
     }
 
@@ -111,7 +111,7 @@ public class replys {
      *
      * @param parent_id the parent id
      */
-    public void setParent_id(int parent_id) {
+    public void setParent_id(String parent_id) {
         this.parent_id = parent_id;
     }
 
@@ -120,7 +120,7 @@ public class replys {
      *
      * @return the parent id
      */
-    public int getParent_id() {
+    public String getParent_id() {
         return parent_id;
     }
 
