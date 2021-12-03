@@ -2,6 +2,7 @@ package ApplicationOfComments.Service;
 
 import ApplicationOfComments.APIsDAO.PostOfArtsDAO;
 import ApplicationOfComments.Model.POSTs;
+import ApplicationOfComments.Model.PostGoods;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -65,5 +66,36 @@ public class PostOfArtsService {
      */
     public List<POSTs> getlist(){
         return posTsDAO.list();
+    }
+
+    /**
+     * Add goods int.
+     *
+     * @param postGoods the post goods
+     * @return the int
+     */
+    public int addGoods(PostGoods postGoods){
+        return posTsDAO.addGoods(postGoods);
+    }
+
+    /**
+     * Delete goods int.
+     *
+     * @param postGoods the post goods
+     * @return the int
+     */
+    public int deleteGoods(PostGoods postGoods){
+        return posTsDAO.deleteGoods(postGoods);
+    }
+
+    /**
+     * Get goods post goods.
+     *
+     * @param post_id the post id
+     * @param user_id the user id
+     * @return the post goods
+     */
+    public PostGoods getGoods(String post_id,String user_id){
+        return posTsDAO.getGoods(post_id,user_id);
     }
 }

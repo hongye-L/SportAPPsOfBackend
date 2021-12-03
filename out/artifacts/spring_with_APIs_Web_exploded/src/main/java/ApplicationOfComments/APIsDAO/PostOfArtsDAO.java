@@ -1,6 +1,7 @@
 package ApplicationOfComments.APIsDAO;
 
 import ApplicationOfComments.Model.POSTs;
+import ApplicationOfComments.Model.PostGoods;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -12,6 +13,7 @@ import java.util.List;
 
 /**
  * The type Post of arts dao.
+ *
  * @author 竑也
  */
 @Repository
@@ -25,11 +27,12 @@ public class PostOfArtsDAO {
      * @param posTs the pos ts
      * @return the int
      */
-    public int addcomment(POSTs posTs){
+    public int addcomment(POSTs posTs)
+    {
         String sql="insert into sportapp.post_arts(post_id,nickname,user_avatar,content,post_title,picture_1" +
-                ",picture_2,picture_3,picture_4,picture_5,picture_6,goods,videos) " +
-                "values(:post_id,:nickname,:user_avatar,:content,:post_title,:picture_1,:picture_2" +
-                ",:picture_3,:picture_4,:picture_5,:picture_6,:goods,:videos)";
+                ",picture_2,picture_3,picture_4,picture_5,picture_6,replys,goods,videos) " +
+                "values(:post_id,:nickname,:user_avatar,:content,:post_title,:picture_1,:picture_2"+
+                ",:picture_3,:picture_4,:picture_5,:picture_6,:replys,:goods,:videos)";
         return new NamedParameterJdbcTemplate(jdbcTemplate).update(sql,new BeanPropertySqlParameterSource(posTs));
     }
 
@@ -78,5 +81,42 @@ public class PostOfArtsDAO {
         String sql="select * from sportapp.post_arts";
         List<POSTs> list =jdbcTemplate.query(sql,new BeanPropertyRowMapper<>(POSTs.class));
         return list;
+    }
+
+    /**
+     * Add goods int.
+     *
+     * @param postGoods the post goods
+     * @return the int
+     */
+    public int addGoods(PostGoods postGoods)
+    {
+        String sql = "insert into sportapp.post_goods(post_id,user_id,goods) " +
+                "values(:post_id,:user_id,true)";
+        return new NamedParameterJdbcTemplate(jdbcTemplate).update(sql,new BeanPropertySqlParameterSource(postGoods));
+    }
+
+    /**
+     * Delete goods int.
+     *
+     * @param postGoods the post goods
+     * @return the int
+     */
+    public int deleteGoods(PostGoods postGoods){
+        String sql="update sportapp.post_goods set goods=replace(goods, true, false) where post_id=:post_id and user_id=:user_id";
+        return new NamedParameterJdbcTemplate(jdbcTemplate).update(sql,new BeanPropertySqlParameterSource(postGoods));
+    }
+
+    /**
+     * Get goods post goods.
+     *
+     * @param post_id the post id
+     * @param user_id the user id
+     * @return the post goods
+     */
+    public PostGoods getGoods(String post_id,String user_id){
+        String sql="select goods from sportapp.post_goods where  post_id = ? and user_id=?";
+        List<PostGoods> list =jdbcTemplate.query(sql,new Object[]{post_id,user_id},new BeanPropertyRowMapper(PostGoods.class));
+        return list.size() > 0 ? list.get(0) : null;
     }
 }

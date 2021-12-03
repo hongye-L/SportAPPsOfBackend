@@ -17,7 +17,7 @@ public class POSTs {
     private String picture_4;
     private String picture_5;
     private String picture_6;
-    private String goods;
+    private Boolean goods;
     private Integer replys;
     private String videos;
     /**
@@ -40,7 +40,7 @@ public class POSTs {
      */
     public POSTs(int post_id, String nickname, String user_avatar, String time, String post_title, String content,
                  String picture_1, String picture_2, String picture_3,
-                 String picture_4, String picture_5, String picture_6, String goods, Integer replys, String videos){
+                 String picture_4, String picture_5, String picture_6, Boolean goods, Integer replys, String videos){
         this.post_id=post_id;
         this.nickname=nickname;
         this.user_avatar=user_avatar;
@@ -140,7 +140,7 @@ public class POSTs {
      *
      * @return the goods
      */
-    public String getGoods() {
+    public Boolean getGoods() {
         return goods;
     }
 
@@ -239,7 +239,7 @@ public class POSTs {
      *
      * @param goods the goods
      */
-    public void setGoods(String goods) {
+    public void setGoods(Boolean goods) {
         this.goods = goods;
     }
 

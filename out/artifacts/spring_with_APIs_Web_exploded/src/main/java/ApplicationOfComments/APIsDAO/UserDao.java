@@ -47,12 +47,12 @@ public class UserDao{
     /**
      * Userslist users.
      *
-     * @param username the username
+     * @param userid the userid
      * @return the users
      */
-    public Users userlist(String username){
-        String sql="select * from timeapp.infos where user_name=?";
-        List<Users> list =jdbcTemplate.query(sql,new Object[]{username},new BeanPropertyRowMapper(Users.class));
+    public Users userlist(String userid){
+        String sql="select * from timeapp.infos where user_id=?";
+        List<Users> list =jdbcTemplate.query(sql,new Object[]{userid},new BeanPropertyRowMapper(Users.class));
         return list.size() > 0 ? list.get(0) : null;
     }
 

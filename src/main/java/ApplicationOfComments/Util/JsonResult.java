@@ -2,15 +2,16 @@ package ApplicationOfComments.Util;
 
 /**
  * The type Json result.
+ * @author 竑也
  */
 public class JsonResult {
     /*
-    成功没有？
+    *成功没有？
      */
     private boolean success;
     /*
-    消息
-     */
+    *消息
+    */
     private String message;
     /*
     返回码

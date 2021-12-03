@@ -1,6 +1,7 @@
 package ApplicationOfComments.Controller;
 
 import ApplicationOfComments.Model.POSTs;
+import ApplicationOfComments.Model.PostGoods;
 import ApplicationOfComments.Service.PostOfSportService;
 import ApplicationOfComments.Util.GlobalReturnCode;
 import ApplicationOfComments.Util.JsonResult;
@@ -97,5 +98,52 @@ public class PostsOfSportController {
     public JsonResult get(HttpServletRequest httpServletRequest, @RequestBody Map<String, String> map) {
         POSTs posTs=postService.get(map.get("id"));
         return new JsonResult(true, GlobalReturnCode.OPERA_SUCCESS,posTs);
+    }
+
+    /**
+     * Add goods json result.
+     *
+     * @param httpServletRequest the http servlet request
+     * @param postGoods          the post goods
+     * @return the json result
+     */
+    @PostMapping("/addGoods")
+    public JsonResult addGoods(HttpServletRequest httpServletRequest, @RequestBody PostGoods postGoods) {
+        int flag = postService.addGoods(postGoods);
+        if (flag == 1) {
+            return new JsonResult(true, GlobalReturnCode.SAVE_SUCCESS);
+        } else {
+            return new JsonResult(false, GlobalReturnCode.OPERA_FAILURE);
+        }
+    }
+
+    /**
+     * Del goods json result.
+     *
+     * @param httpServletRequest the http servlet request
+     * @param postGoods          the post goods
+     * @return the json result
+     */
+    @PostMapping("/deleteGoods")
+    public JsonResult delGoods(HttpServletRequest httpServletRequest, @RequestBody PostGoods postGoods) {
+        int flag = postService.deleteGoods(postGoods);
+        if (flag == 1) {
+            return new JsonResult(true, GlobalReturnCode.SAVE_SUCCESS);
+        } else {
+            return new JsonResult(false, GlobalReturnCode.OPERA_FAILURE);
+        }
+    }
+
+    /**
+     * Gets goods.
+     *
+     * @param httpServletRequest the http servlet request
+     * @param map                the map
+     * @return the goods
+     */
+    @PostMapping("/getGoods")
+    public JsonResult getGoods(HttpServletRequest httpServletRequest, @RequestBody Map<String, String> map) {
+        PostGoods postGoods=postService.getGoods(map.get("post_id"),map.get("user_id"));
+        return new JsonResult(true, GlobalReturnCode.OPERA_SUCCESS,postGoods);
     }
 }

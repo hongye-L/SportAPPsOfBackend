@@ -17,6 +17,7 @@ import java.util.Map;
 
 /**
  * The type Post of arts controller.
+ *
  * @author 竑也
  */
 @RestController
@@ -100,6 +101,14 @@ public class PostOfArtsController {
         POSTs posTs=postService.get(map.get("post_id"));
         return new JsonResult(true, GlobalReturnCode.OPERA_SUCCESS,posTs);
     }
+
+    /**
+     * Add goods json result.
+     *
+     * @param httpServletRequest the http servlet request
+     * @param postGoods          the post goods
+     * @return the json result
+     */
     @PostMapping("/addGoods")
     public JsonResult addGoods(HttpServletRequest httpServletRequest, @RequestBody PostGoods postGoods) {
         int flag = postService.addGoods(postGoods);
@@ -109,6 +118,14 @@ public class PostOfArtsController {
             return new JsonResult(false, GlobalReturnCode.OPERA_FAILURE);
         }
     }
+
+    /**
+     * Del goods json result.
+     *
+     * @param httpServletRequest the http servlet request
+     * @param postGoods          the post goods
+     * @return the json result
+     */
     @PostMapping("/deleteGoods")
     public JsonResult delGoods(HttpServletRequest httpServletRequest, @RequestBody PostGoods postGoods) {
         int flag = postService.deleteGoods(postGoods);
@@ -118,6 +135,14 @@ public class PostOfArtsController {
             return new JsonResult(false, GlobalReturnCode.OPERA_FAILURE);
         }
     }
+
+    /**
+     * Gets goods.
+     *
+     * @param httpServletRequest the http servlet request
+     * @param map                the map
+     * @return the goods
+     */
     @PostMapping("/getGoods")
     public JsonResult getGoods(HttpServletRequest httpServletRequest, @RequestBody Map<String, String> map) {
         PostGoods postGoods=postService.getGoods(map.get("post_id"),map.get("user_id"));
